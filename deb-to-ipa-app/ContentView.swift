@@ -7,9 +7,8 @@
 
 import SwiftUI
 import ArArchiveKit
-import Gzip
-import Light_Swift_Untar
 import Zip
+import SWCompression
 
 struct ContentView: View {
     @State private var isImporting = false
@@ -30,7 +29,7 @@ struct ContentView: View {
                 .background(Color.blue)
                 .cornerRadius(8)
                 .foregroundColor(.white)
-                Text("By sourcelocation\n\nCredits: itsnebulalol,\n LebJe/ArArchiveKit, \n1024jp/GzipSwift,\nmarmelroy/Zip,\nUInt2048/Light-Swift-Untar")
+                Text("By sourcelocation\n\nCredits: itsnebulalol,\nLebJe/ArArchiveKit,\nmarmelroy/Zip,\ntsolomko/SWCompression")
                     .foregroundColor(Color.secondary)
                     .font(.caption)
                     .multilineTextAlignment(.center)
@@ -60,10 +59,9 @@ struct ContentView: View {
         let tempDir = fm.temporaryDirectory
         let extractedDir = tempDir.appendingPathComponent("extracted")
         let ipaPayloadDir = tempDir.appendingPathComponent("Payload")
-        let dataURL = tempDir.appendingPathComponent("deb.tar.gz")
+        var dataURL: URL?
         var zipFilePath: URL?
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-            
             do {
                 guard url.startAccessingSecurityScopedResource() else { throw ConversionError.noPermission }
                 let reader = try ArArchiveReader(archive: Array<UInt8>(Data(contentsOf: url)))
@@ -71,18 +69,32 @@ struct ContentView: View {
                 // Extract .deb
                 var foundData = false
                 for (header, dataInts) in reader {
-                    if header.name == "data.tar.gz" {
+                    if header.name == "data.tar.gz" || header.name == "data.tar.lzma" {
+                        dataURL = tempDir.appendingPathComponent(header.name)
+                        foundData = true
+                        
                         // Extract data.tar.gz
                         let data = Data(dataInts)
-                        try data.write(to: dataURL, options: .atomic)
-                        foundData = true
-                        let decompressedData = try data.gunzipped()
-                        try fm.createFilesAndDirectories(url: extractedDir, tarData: decompressedData)
+                        try data.write(to: dataURL!, options: .atomic)
+                        
+                        let decompressedData = header.name == "data.tar.gz" ? try GzipArchive.unarchive(archive:data) : try LZMA.decompress(data: data)
+                        try decompressedData.write(to: extractedDir.appendingPathExtension("tar"))
+                        let tarContainer = try TarContainer.open(container: decompressedData)
+//                        try fm.createFilesAndDirectories(url: extractedDir, tarData: decompressedData)
+                        for entry in tarContainer {
+                            if entry.info.type == .directory {
+                                try fm.createDirectory(at: extractedDir.appendingPathComponent(entry.info.name), withIntermediateDirectories: true)
+                            } else if entry.info.type == .regular {
+                                try entry.data?.write(to: extractedDir.appendingPathComponent(entry.info.name))
+                            } else {
+                                alert("unknown")
+                            }
+                            print(entry.info)
+                        }
                         
                         // Create .ipa archive
                         try fm.createDirectory(at: ipaPayloadDir, withIntermediateDirectories: true)
                         
-                        // Copy apps to the archive
                         for url in try fm.contentsOfDirectory(at: tempDir.appendingPathComponent( "extracted/Applications/"), includingPropertiesForKeys: nil) {
                             try fm.moveItem(at: url, to: ipaPayloadDir.appendingPathComponent( url.lastPathComponent))
                         }
@@ -116,7 +128,7 @@ struct ContentView: View {
             }
             url.stopAccessingSecurityScopedResource()
             // clean up
-            try? fm.removeItem(at: dataURL)
+            if (dataURL != nil) { try? fm.removeItem(at: dataURL!) }
             try? fm.removeItem(at: extractedDir)
             try? fm.removeItem(at: ipaPayloadDir)
             if zipFilePath != nil {

@@ -10,21 +10,21 @@
       }
     },
     {
-      "identity" : "gzipswift",
+      "identity" : "bitbytedata",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/1024jp/GzipSwift",
+      "location" : "https://github.com/tsolomko/BitByteData",
       "state" : {
-        "revision" : "7a7f17761c76a932662ab77028a4329f67d645a4",
-        "version" : "5.2.0"
+        "revision" : "b4b41619522aacd7aae7b02fa8360833e796a03d",
+        "version" : "2.0.2"
       }
     },
     {
-      "identity" : "light-swift-untar",
+      "identity" : "swcompression",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/UInt2048/Light-Swift-Untar",
+      "location" : "https://github.com/tsolomko/SWCompression",
       "state" : {
-        "branch" : "main",
-        "revision" : "0facd92faa289d38beb0401361557c6d53129788"
+        "branch" : "develop",
+        "revision" : "d0479a19e79246a8f17fb6596675ee8e3ac75c0a"
       }
     },
     {

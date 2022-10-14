@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1D968128F9E3D7006AC6D2 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = CE1D968028F9E3D7006AC6D2 /* Zip */; };
+		CE1D968428F9E781006AC6D2 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = CE1D968328F9E781006AC6D2 /* SWCompression */; };
 		CE66018B28F83F33000EC344 /* deb_to_ipa_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE66018A28F83F33000EC344 /* deb_to_ipa_appApp.swift */; };
 		CE66018D28F83F33000EC344 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE66018C28F83F33000EC344 /* ContentView.swift */; };
 		CE66018F28F83F34000EC344 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE66018E28F83F34000EC344 /* Assets.xcassets */; };
 		CE66019228F83F34000EC344 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE66019128F83F34000EC344 /* Preview Assets.xcassets */; };
 		CE66019A28F85705000EC344 /* ArArchiveKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE66019928F85705000EC344 /* ArArchiveKit */; };
-		CE6AEB4928F8B99800FF43A9 /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = CE6AEB4828F8B99800FF43A9 /* Gzip */; };
-		CE6AEB4C28F8BA7600FF43A9 /* Light-Swift-Untar in Frameworks */ = {isa = PBXBuildFile; productRef = CE6AEB4B28F8BA7600FF43A9 /* Light-Swift-Untar */; };
-		CE6AEB5128F8BD3F00FF43A9 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = CE6AEB5028F8BD3F00FF43A9 /* Zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE6AEB4928F8B99800FF43A9 /* Gzip in Frameworks */,
+				CE1D968428F9E781006AC6D2 /* SWCompression in Frameworks */,
 				CE66019A28F85705000EC344 /* ArArchiveKit in Frameworks */,
-				CE6AEB5128F8BD3F00FF43A9 /* Zip in Frameworks */,
-				CE6AEB4C28F8BA7600FF43A9 /* Light-Swift-Untar in Frameworks */,
+				CE1D968128F9E3D7006AC6D2 /* Zip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +43,7 @@
 			children = (
 				CE66018928F83F33000EC344 /* deb-to-ipa-app */,
 				CE66018828F83F33000EC344 /* Products */,
+				CE7B175B28F9D4E000B65A74 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +74,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CE7B175B28F9D4E000B65A74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,9 +99,8 @@
 			name = "deb-to-ipa-app";
 			packageProductDependencies = (
 				CE66019928F85705000EC344 /* ArArchiveKit */,
-				CE6AEB4828F8B99800FF43A9 /* Gzip */,
-				CE6AEB4B28F8BA7600FF43A9 /* Light-Swift-Untar */,
-				CE6AEB5028F8BD3F00FF43A9 /* Zip */,
+				CE1D968028F9E3D7006AC6D2 /* Zip */,
+				CE1D968328F9E781006AC6D2 /* SWCompression */,
 			);
 			productName = "deb-to-ipa-app";
 			productReference = CE66018728F83F33000EC344 /* deb-to-ipa-app.app */;
@@ -127,9 +132,8 @@
 			mainGroup = CE66017E28F83F33000EC344;
 			packageReferences = (
 				CE66019828F85705000EC344 /* XCRemoteSwiftPackageReference "ArArchiveKit" */,
-				CE6AEB4728F8B99800FF43A9 /* XCRemoteSwiftPackageReference "GzipSwift" */,
-				CE6AEB4A28F8BA7600FF43A9 /* XCRemoteSwiftPackageReference "Light-Swift-Untar" */,
 				CE6AEB4F28F8BD3F00FF43A9 /* XCRemoteSwiftPackageReference "Zip" */,
+				CE1D968228F9E781006AC6D2 /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
 			productRefGroup = CE66018828F83F33000EC344 /* Products */;
 			projectDirPath = "";
@@ -365,28 +369,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE1D968228F9E781006AC6D2 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tsolomko/SWCompression";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		CE66019828F85705000EC344 /* XCRemoteSwiftPackageReference "ArArchiveKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LebJe/ArArchiveKit";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.3.0;
-			};
-		};
-		CE6AEB4728F8B99800FF43A9 /* XCRemoteSwiftPackageReference "GzipSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/1024jp/GzipSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		CE6AEB4A28F8BA7600FF43A9 /* XCRemoteSwiftPackageReference "Light-Swift-Untar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/UInt2048/Light-Swift-Untar";
-			requirement = {
-				branch = main;
-				kind = branch;
 			};
 		};
 		CE6AEB4F28F8BD3F00FF43A9 /* XCRemoteSwiftPackageReference "Zip" */ = {
@@ -400,25 +396,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE1D968028F9E3D7006AC6D2 /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6AEB4F28F8BD3F00FF43A9 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
+		CE1D968328F9E781006AC6D2 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE1D968228F9E781006AC6D2 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
 		CE66019928F85705000EC344 /* ArArchiveKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE66019828F85705000EC344 /* XCRemoteSwiftPackageReference "ArArchiveKit" */;
 			productName = ArArchiveKit;
-		};
-		CE6AEB4828F8B99800FF43A9 /* Gzip */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE6AEB4728F8B99800FF43A9 /* XCRemoteSwiftPackageReference "GzipSwift" */;
-			productName = Gzip;
-		};
-		CE6AEB4B28F8BA7600FF43A9 /* Light-Swift-Untar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE6AEB4A28F8BA7600FF43A9 /* XCRemoteSwiftPackageReference "Light-Swift-Untar" */;
-			productName = "Light-Swift-Untar";
-		};
-		CE6AEB5028F8BD3F00FF43A9 /* Zip */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CE6AEB4F28F8BD3F00FF43A9 /* XCRemoteSwiftPackageReference "Zip" */;
-			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
