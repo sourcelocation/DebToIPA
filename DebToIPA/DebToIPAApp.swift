@@ -1,6 +1,6 @@
 //
-//  deb_to_ipa_appApp.swift
-//  deb-to-ipa-app
+//  DebToIPAApp.swift
+//  DebToIPA
 //
 //  Created by exerhythm on 13.10.2022.
 //

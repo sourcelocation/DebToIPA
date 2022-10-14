@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE1D968128F9E3D7006AC6D2 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = CE1D968028F9E3D7006AC6D2 /* Zip */; };
 		CE1D968428F9E781006AC6D2 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = CE1D968328F9E781006AC6D2 /* SWCompression */; };
-		CE66018B28F83F33000EC344 /* deb_to_ipa_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE66018A28F83F33000EC344 /* deb_to_ipa_appApp.swift */; };
+		CE1D968B28FA045B006AC6D2 /* DebToIPA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D968A28FA045B006AC6D2 /* DebToIPA.swift */; };
+		CE66018B28F83F33000EC344 /* DebToIPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE66018A28F83F33000EC344 /* DebToIPAApp.swift */; };
 		CE66018D28F83F33000EC344 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE66018C28F83F33000EC344 /* ContentView.swift */; };
 		CE66018F28F83F34000EC344 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE66018E28F83F34000EC344 /* Assets.xcassets */; };
 		CE66019228F83F34000EC344 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE66019128F83F34000EC344 /* Preview Assets.xcassets */; };
@@ -17,8 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE66018728F83F33000EC344 /* deb-to-ipa-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "deb-to-ipa-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE66018A28F83F33000EC344 /* deb_to_ipa_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deb_to_ipa_appApp.swift; sourceTree = "<group>"; };
+		CE1D968A28FA045B006AC6D2 /* DebToIPA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebToIPA.swift; sourceTree = "<group>"; };
+		CE66018728F83F33000EC344 /* DebToIPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebToIPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE66018A28F83F33000EC344 /* DebToIPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebToIPAApp.swift; sourceTree = "<group>"; };
 		CE66018C28F83F33000EC344 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE66018E28F83F34000EC344 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE66019128F83F34000EC344 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -41,7 +43,7 @@
 		CE66017E28F83F33000EC344 = {
 			isa = PBXGroup;
 			children = (
-				CE66018928F83F33000EC344 /* deb-to-ipa-app */,
+				CE66018928F83F33000EC344 /* DebToIPA */,
 				CE66018828F83F33000EC344 /* Products */,
 				CE7B175B28F9D4E000B65A74 /* Frameworks */,
 			);
@@ -50,20 +52,21 @@
 		CE66018828F83F33000EC344 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE66018728F83F33000EC344 /* deb-to-ipa-app.app */,
+				CE66018728F83F33000EC344 /* DebToIPA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE66018928F83F33000EC344 /* deb-to-ipa-app */ = {
+		CE66018928F83F33000EC344 /* DebToIPA */ = {
 			isa = PBXGroup;
 			children = (
-				CE66018A28F83F33000EC344 /* deb_to_ipa_appApp.swift */,
+				CE66018A28F83F33000EC344 /* DebToIPAApp.swift */,
 				CE66018C28F83F33000EC344 /* ContentView.swift */,
+				CE1D968A28FA045B006AC6D2 /* DebToIPA.swift */,
 				CE66018E28F83F34000EC344 /* Assets.xcassets */,
 				CE66019028F83F34000EC344 /* Preview Content */,
 			);
-			path = "deb-to-ipa-app";
+			path = DebToIPA;
 			sourceTree = "<group>";
 		};
 		CE66019028F83F34000EC344 /* Preview Content */ = {
@@ -84,9 +87,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CE66018628F83F33000EC344 /* deb-to-ipa-app */ = {
+		CE66018628F83F33000EC344 /* DebToIPA */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE66019528F83F34000EC344 /* Build configuration list for PBXNativeTarget "deb-to-ipa-app" */;
+			buildConfigurationList = CE66019528F83F34000EC344 /* Build configuration list for PBXNativeTarget "DebToIPA" */;
 			buildPhases = (
 				CE66018328F83F33000EC344 /* Sources */,
 				CE66018428F83F33000EC344 /* Frameworks */,
@@ -96,14 +99,14 @@
 			);
 			dependencies = (
 			);
-			name = "deb-to-ipa-app";
+			name = DebToIPA;
 			packageProductDependencies = (
 				CE66019928F85705000EC344 /* ArArchiveKit */,
 				CE1D968028F9E3D7006AC6D2 /* Zip */,
 				CE1D968328F9E781006AC6D2 /* SWCompression */,
 			);
 			productName = "deb-to-ipa-app";
-			productReference = CE66018728F83F33000EC344 /* deb-to-ipa-app.app */;
+			productReference = CE66018728F83F33000EC344 /* DebToIPA.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -121,7 +124,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CE66018228F83F33000EC344 /* Build configuration list for PBXProject "deb-to-ipa-app" */;
+			buildConfigurationList = CE66018228F83F33000EC344 /* Build configuration list for PBXProject "DebToIPA" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -139,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE66018628F83F33000EC344 /* deb-to-ipa-app */,
+				CE66018628F83F33000EC344 /* DebToIPA */,
 			);
 		};
 /* End PBXProject section */
@@ -162,7 +165,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE66018D28F83F33000EC344 /* ContentView.swift in Sources */,
-				CE66018B28F83F33000EC344 /* deb_to_ipa_appApp.swift in Sources */,
+				CE1D968B28FA045B006AC6D2 /* DebToIPA.swift in Sources */,
+				CE66018B28F83F33000EC344 /* DebToIPAApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,11 +294,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"deb-to-ipa-app/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DebToIPA/Preview Content\"";
 				DEVELOPMENT_TEAM = 92S6JX27W2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "deb-to-ipa";
+				INFOPLIST_KEY_CFBundleDisplayName = DebToIPA;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -305,7 +309,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.sourceloc.deb-to-ipa-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -321,11 +325,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"deb-to-ipa-app/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DebToIPA/Preview Content\"";
 				DEVELOPMENT_TEAM = 92S6JX27W2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "deb-to-ipa";
+				INFOPLIST_KEY_CFBundleDisplayName = DebToIPA;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -336,7 +340,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.sourceloc.deb-to-ipa-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -348,7 +352,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE66018228F83F33000EC344 /* Build configuration list for PBXProject "deb-to-ipa-app" */ = {
+		CE66018228F83F33000EC344 /* Build configuration list for PBXProject "DebToIPA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE66019328F83F34000EC344 /* Debug */,
@@ -357,7 +361,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE66019528F83F34000EC344 /* Build configuration list for PBXNativeTarget "deb-to-ipa-app" */ = {
+		CE66019528F83F34000EC344 /* Build configuration list for PBXNativeTarget "DebToIPA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE66019628F83F34000EC344 /* Debug */,
