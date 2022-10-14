@@ -1,6 +1,6 @@
-# Deb to IPA
+# DebtoIPA
 Convert .deb apps to .ipa files, on iOS, locally
-![Cover Art](https://user-images.githubusercontent.com/52459150/195938795-25b0b6e4-c090-44b4-8044-f027295a3c82.png)
+![Cover Art](https://user-images.githubusercontent.com/52459150/195942517-6b1cd3f4-7fbc-4707-9057-ef77a089cf7e.png)
 
 <img src="https://user-images.githubusercontent.com/52459150/195935448-3726d80d-eceb-4de9-8cea-ad9a96788f53.png" width="275"> <img src="https://user-images.githubusercontent.com/52459150/195936074-9d0a6661-ef63-446c-b1cf-ec3ac4f9cef2.png" width="275"> <img src="https://user-images.githubusercontent.com/52459150/195936151-8b1dd06e-8d62-4f0c-9b1a-69f5d6c0cc59.png" width="275"> <img src="https://user-images.githubusercontent.com/52459150/195936214-c604857e-81ee-44f5-a153-a5a46d807dcc.png" width="275">
 ## Usage
