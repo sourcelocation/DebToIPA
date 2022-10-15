@@ -122,6 +122,7 @@ struct ContentView: View {
             shareActivity.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height, width: 0, height: 0)
             shareActivity.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
             shareActivity.completionWithItemsHandler = { (type,completed, returnedItems, activityError) in
+                statusText = "Done."
                 if performCleanup {
                     do {
                         try DebToIPA.cleanup()

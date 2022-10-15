@@ -39,7 +39,7 @@ class DebToIPA {
         try? fm.removeItem(at: destIpaURL)
         try fm.moveItem(at: zipFilePath, to: destIpaURL)
         
-        statusUpdate("Done.")
+        statusUpdate("Opening share sheet...")
         return zipFilePath.deletingPathExtension().appendingPathExtension("ipa")
     }
     
@@ -65,19 +65,19 @@ class DebToIPA {
             switch DecompressionMethod(rawValue: header.name.components(separatedBy: ".").last ?? "") {
             case .lzma:
                 foundData = true
-                statusUpdate("Using LZMA")
+                statusUpdate("Decompressing LZMA data.\nThis might take a while")
                 decompressedData = try LZMA.decompress(data: data)
             case .gz:
                 foundData = true
-                statusUpdate("Using GzipArchive")
+                statusUpdate("Unarchiving Gzip archive.\nThis might take a while")
                 decompressedData = try GzipArchive.unarchive(archive:data)
             case .bzip2:
                 foundData = true
-                statusUpdate("Using BZip2")
+                statusUpdate("Decompressing BZip2 data.\nThis might take a while")
                 decompressedData = try BZip2.decompress(data:data)
             case .xz:
                 foundData = true
-                statusUpdate("Using XZArchive")
+                statusUpdate("Unarchiving XZ archive.\nThis might take a while")
                 decompressedData = try XZArchive.unarchive(archive:data)
             case .none:
                 throw ConversionError.unsupportedCompression
@@ -93,6 +93,8 @@ class DebToIPA {
                     try fm.createDirectory(at: extractedDir.appendingPathComponent(entry.info.name), withIntermediateDirectories: true)
                 } else if entry.info.type == .regular {
                     try entry.data?.write(to: extractedDir.appendingPathComponent(entry.info.name))
+                } else if entry.info.type == .symbolicLink {
+                    try fm.createSymbolicLink(at: extractedDir.appendingPathComponent(entry.info.name), withDestinationURL: URL(fileURLWithPath: entry.info.linkName))
                 } else {
                     throw ConversionError.unknownFiletypeInsideTar
                 }
