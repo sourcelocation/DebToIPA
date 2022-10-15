@@ -91,11 +91,11 @@ struct ContentView: View {
                     if let convError = error as? ConversionError {
                         switch convError {
                         case .unsupportedApp:
-                            alert("The .deb you imported is UNSUPPORTED and CANNOT be converted to .ipa, as it doesn't have Applications folder.")
+                            alert("The .deb you imported is UNSUPPORTED by the method the app uses and CANNOT be converted to .ipa, as it doesn't have Applications folder. You can try using a PC/Mac to inject the tweak into .ipa.")
                         case .noDataFound:
                             alert("Data wasn't found in .deb. Are you sure the .deb you imported isn't corrupted?")
                         case .noApplication:
-                            alert("The .deb you imported is UNSUPPORTED and CANNOT be converted to .ipa, as it doesn't have a .app file inside it.")
+                            alert("The .deb you imported is UNSUPPORTED by the method the app uses and CANNOT be converted to .ipa, as it doesn't have Applications folder. You can try using a PC/Mac to inject the tweak into .ipa.")
                         case .noPermission:
                             alert("No permission to view the file")
                         case .unknownFiletypeInsideTar:
