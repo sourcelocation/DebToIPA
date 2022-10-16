@@ -1,6 +1,6 @@
 # DebtoIPA
+![Banner](https://user-images.githubusercontent.com/52459150/196053657-ac7aaa35-ff7d-4091-b4fb-e1536b59250f.png)
 Convert .deb apps to .ipa files, on iOS, locally
-![Cover Art](https://user-images.githubusercontent.com/52459150/195981577-3dd34fc9-6826-4d52-a2d2-a3aed418158f.png)
 
 ## Usage
 1. Download .deb that contains .app file. You will get an error if you try importing other files.
