@@ -11,7 +11,7 @@ import SwiftUI
 struct deb_to_ipa_appApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DebToIPAView()
         }
     }
 }

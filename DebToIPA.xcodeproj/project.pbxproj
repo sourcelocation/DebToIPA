@@ -10,8 +10,8 @@
 		CE1D968128F9E3D7006AC6D2 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = CE1D968028F9E3D7006AC6D2 /* Zip */; };
 		CE1D968428F9E781006AC6D2 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = CE1D968328F9E781006AC6D2 /* SWCompression */; };
 		CE1D968B28FA045B006AC6D2 /* DebToIPA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D968A28FA045B006AC6D2 /* DebToIPA.swift */; };
+		CE3EEFC528FB23FD00096E1D /* DebToIPAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3EEFC428FB23FD00096E1D /* DebToIPAView.swift */; };
 		CE66018B28F83F33000EC344 /* DebToIPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE66018A28F83F33000EC344 /* DebToIPAApp.swift */; };
-		CE66018D28F83F33000EC344 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE66018C28F83F33000EC344 /* ContentView.swift */; };
 		CE66018F28F83F34000EC344 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE66018E28F83F34000EC344 /* Assets.xcassets */; };
 		CE66019228F83F34000EC344 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE66019128F83F34000EC344 /* Preview Assets.xcassets */; };
 		CE66019A28F85705000EC344 /* ArArchiveKit in Frameworks */ = {isa = PBXBuildFile; productRef = CE66019928F85705000EC344 /* ArArchiveKit */; };
@@ -19,11 +19,13 @@
 
 /* Begin PBXFileReference section */
 		CE1D968A28FA045B006AC6D2 /* DebToIPA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebToIPA.swift; sourceTree = "<group>"; };
+		CE3EEFC428FB23FD00096E1D /* DebToIPAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebToIPAView.swift; sourceTree = "<group>"; };
 		CE66018728F83F33000EC344 /* DebToIPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebToIPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE66018A28F83F33000EC344 /* DebToIPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebToIPAApp.swift; sourceTree = "<group>"; };
-		CE66018C28F83F33000EC344 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE66018E28F83F34000EC344 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE66019128F83F34000EC344 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CEB681E628FB539E00E65A2B /* AppSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppSupport.framework; path = ../../../theos/sdks/iPhoneOS14.5.sdk/System/Library/PrivateFrameworks/AppSupport.framework; sourceTree = "<group>"; };
+		CEC141FF28FE024600596DC3 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +62,9 @@
 		CE66018928F83F33000EC344 /* DebToIPA */ = {
 			isa = PBXGroup;
 			children = (
-				CE66018A28F83F33000EC344 /* DebToIPAApp.swift */,
-				CE66018C28F83F33000EC344 /* ContentView.swift */,
 				CE1D968A28FA045B006AC6D2 /* DebToIPA.swift */,
+				CE3EEFC428FB23FD00096E1D /* DebToIPAView.swift */,
+				CE66018A28F83F33000EC344 /* DebToIPAApp.swift */,
 				CE66018E28F83F34000EC344 /* Assets.xcassets */,
 				CE66019028F83F34000EC344 /* Preview Content */,
 			);
@@ -80,6 +82,8 @@
 		CE7B175B28F9D4E000B65A74 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEC141FF28FE024600596DC3 /* CoreServices.framework */,
+				CEB681E628FB539E00E65A2B /* AppSupport.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,6 +125,7 @@
 				TargetAttributes = {
 					CE66018628F83F33000EC344 = {
 						CreatedOnToolsVersion = 14.0;
+						LastSwiftMigration = 1400;
 					};
 				};
 			};
@@ -164,7 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE66018D28F83F33000EC344 /* ContentView.swift in Sources */,
+				CE3EEFC528FB23FD00096E1D /* DebToIPAView.swift in Sources */,
 				CE1D968B28FA045B006AC6D2 /* DebToIPA.swift in Sources */,
 				CE66018B28F83F33000EC344 /* DebToIPAApp.swift in Sources */,
 			);
@@ -223,7 +228,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -277,7 +282,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -292,28 +297,33 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DebToIPA/Preview Content\"";
 				DEVELOPMENT_TEAM = 92S6JX27W2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DebToIPA/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DebToIPA;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires library permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.sourceloc.deb-to-ipa-app";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sourceloc.DebToIPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -324,26 +334,30 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DebToIPA/Preview Content\"";
 				DEVELOPMENT_TEAM = 92S6JX27W2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DebToIPA/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DebToIPA;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires library permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.sourceloc.deb-to-ipa-app";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sourceloc.DebToIPA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

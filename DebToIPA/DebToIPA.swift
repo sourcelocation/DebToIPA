@@ -5,27 +5,38 @@
 //  Created by exerhythm on 14.10.2022.
 //
 
-import Foundation
 import ArArchiveKit
 import Zip
 import SWCompression
+import UIKit
 
 class DebToIPA {
     private static let fm = FileManager.default
     private static var tempDir: URL { fm.temporaryDirectory }
     
     /// Converts .deb app to .ipa, returns url of .ipa
-    static func convert(_ url: URL, statusUpdate: (String) -> ()) throws -> URL {
+    static func convert(_ url: URL, statusUpdate: (String) -> ()) throws -> SavedIpa {
         try cleanup()
+        var savedIpa = SavedIpa(name: "IPA", bundleID: "Bundle ID unknown", version: "Unknown version", url: nil)
         let payloadDir = tempDir.appendingPathComponent("Payload")
         
         // Extract .deb
-        let appURLs = try extractDeb(url, statusUpdate: statusUpdate)
+        let appURLs = try fm.contentsOfDirectory(at: try extractDeb(url, to: tempDir.appendingPathComponent("deb_extracted"), statusUpdate: statusUpdate).appendingPathComponent("Applications/"), includingPropertiesForKeys: nil)
+        guard fm.fileExists(atPath: tempDir.appendingPathComponent("deb_extracted/Applications/").path) else { throw ConversionError.unsupportedApp }
         
         statusUpdate("Creating .ipa archive")
         // Create .ipa archive
         try fm.createDirectory(at: payloadDir, withIntermediateDirectories: true)
         for url in appURLs {
+            if let infoPlist = NSDictionary(contentsOf: url.appendingPathComponent("Info.plist")) {
+                savedIpa.name = (infoPlist["CFBundleDisplayName"] ?? infoPlist["CFBundleName"]) as? String ?? "Unknown"
+                savedIpa.version = infoPlist["CFBundleVersion"] as? String ?? "Unknown"
+                savedIpa.bundleID = infoPlist["CFBundleIdentifier"] as? String ?? "Unknown"
+//                if let iconFiles = (infoPlist["CFBundleIconFiles"] ?? infoPlist["CFBundleIcons~ipad"]) as? [String], let name = iconFiles.first {
+//                    savedIpa.image = try Data(contentsOf: url.appendingPathComponent(name))
+//                }
+            }
+            
             try fm.moveItem(at: url, to: payloadDir.appendingPathComponent( url.lastPathComponent))
         }
         
@@ -40,14 +51,13 @@ class DebToIPA {
         try fm.moveItem(at: zipFilePath, to: destIpaURL)
         
         statusUpdate("Opening share sheet...")
-        return zipFilePath.deletingPathExtension().appendingPathExtension("ipa")
+        savedIpa.url = destIpaURL
+        return savedIpa
     }
     
     
     /// Extracts deb and returns .app urls
-    static func extractDeb(_ url: URL, statusUpdate: (String) -> ()) throws -> [URL] {
-        let extractedDir = tempDir.appendingPathComponent("extracted")
-        let appsDir = tempDir.appendingPathComponent( "extracted/Applications/")
+    static func extractDeb(_ url: URL, to extractedDir: URL, statusUpdate: (String) -> ()) throws -> URL {
         statusUpdate("Reading .deb")
         let reader = try ArArchiveReader(archive: Array<UInt8>(Data(contentsOf: url)))
         var foundData = false
@@ -100,13 +110,12 @@ class DebToIPA {
                 }
                 print(entry.info)
             }
-            guard fm.fileExists(atPath: appsDir.path) else { throw ConversionError.unsupportedApp }
         }
         
         if !foundData {
             throw ConversionError.noDataFound
         }
-        return try fm.contentsOfDirectory(at: appsDir, includingPropertiesForKeys: nil)
+        return extractedDir
     }
     
     static func cleanup() throws {
